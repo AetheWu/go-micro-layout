@@ -3,7 +3,7 @@ package repo
 import (
 	"context"
 
-	"github.com/go-kratos/kratos-layout/internal/domain"
+	"github.com/go-kratos/kratos-layout/internal/helloworld/domain"
 
 	"github.com/go-kratos/kratos/v2/log"
 )
