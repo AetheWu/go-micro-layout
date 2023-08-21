@@ -7,25 +7,28 @@
 package main
 
 import (
-	"github.com/go-kratos/kratos-layout/internal/helloworld/domain"
 	"github.com/go-kratos/kratos-layout/internal/helloworld/conf"
+	"github.com/go-kratos/kratos-layout/internal/helloworld/domain"
 	"github.com/go-kratos/kratos-layout/internal/helloworld/repo"
 	"github.com/go-kratos/kratos-layout/internal/helloworld/server"
 	"github.com/go-kratos/kratos-layout/internal/helloworld/service"
-
 	"github.com/go-kratos/kratos/v2"
 	"github.com/go-kratos/kratos/v2/log"
+)
+
+import (
+	_ "go.uber.org/automaxprocs"
 )
 
 // Injectors from wire.go:
 
 // wireApp init kratos application.
-func wireApp(confServer *conf.Server, confData *conf.Data, logger log.Logger) (*kratos.App, func(), error) {
-	dataData, cleanup, err := repo.NewData(confData, logger)
+func wireApp(confServer *conf.Server, data *conf.Data, logger log.Logger) (*kratos.App, func(), error) {
+	repoData, cleanup, err := repo.NewData(data, logger)
 	if err != nil {
 		return nil, nil, err
 	}
-	greeterRepo := repo.NewGreeterRepo(dataData, logger)
+	greeterRepo := repo.NewGreeterRepo(repoData, logger)
 	greeterUsecase := domain.NewGreeterUsecase(greeterRepo, logger)
 	greeterService := service.NewGreeterService(greeterUsecase)
 	grpcServer := server.NewGRPCServer(confServer, greeterService, logger)
