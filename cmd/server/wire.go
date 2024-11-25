@@ -6,11 +6,11 @@
 package main
 
 import (
-	"github.com/go-kratos/kratos-layout/internal/helloworld/domain"
-	"github.com/go-kratos/kratos-layout/internal/helloworld/conf"
-	"github.com/go-kratos/kratos-layout/internal/helloworld/repo"
-	"github.com/go-kratos/kratos-layout/internal/helloworld/server"
-	"github.com/go-kratos/kratos-layout/internal/helloworld/service"
+	"github.com/go-kratos/kratos-layout/internal/app/helloworld/conf"
+	"github.com/go-kratos/kratos-layout/internal/app/helloworld/domain"
+	"github.com/go-kratos/kratos-layout/internal/app/helloworld/repo"
+	"github.com/go-kratos/kratos-layout/internal/app/helloworld/server"
+	"github.com/go-kratos/kratos-layout/internal/app/helloworld/service"
 
 	"github.com/go-kratos/kratos/v2"
 	"github.com/go-kratos/kratos/v2/log"
